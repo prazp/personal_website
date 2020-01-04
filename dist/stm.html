@@ -54,18 +54,18 @@
       Smart Training Wheels
     </h1>
     </br>
-    <h3>
+    <h2>
       Background
-    </h3>
+    </h2>
     <p>
       A major project that I completed in 2018 at the University of New South Wales (UNSW) was developing the Smart Training Wheels device. I completed this project with Hamza Khan, another student at UNSW. On this page, I attempt to provide a summary of the work completed in this project. The details I provide are still quite high level and I hope to provide a much deeper technical discussion of the work in the future. 
       </br>
       </br>
       Smart Training Wheels is a product used to teach children how to ride a bicycle. It features the ability to help children develop both pedalling and balancing skills concurrently whilst actively managing their safety. This will be achieved through the lowering of training wheels when the rider is displaying signs of instability and elevation of training wheels when the rider is displaying proficiency. The experience will further be enhanced by providing real time user feedback which will accelerate the learning process.
     </p>
-    <h3>
+    <h2>
       Design Concept
-    </h3>
+    </h2>
     <p>
     Smart Training Wheels will consist of four modules as seen in figure below. These modules are as follows:
       <div>
@@ -78,15 +78,15 @@
       </div>
       <img src="img/SMT/design_concept.JPG" alt="Design Concept" class="center" style="width: 40%; height: 40%"/>
     </p>
-    <h3>
+    <h2>
       High Level Design
-    </h3>
+    </h2>
     <p>
       <img src="img/SMT/high_level_design.JPG" alt="High Level Design" class="center" style="width: 40%; height: 40%"/>
     </p>
-    <h3>
+    <h2>
       Design Details
-    </h3>
+    </h2>
     <p>
       The principle of operation for Smart Training Wheels is described as follows. The user gets on the bike and turns the power switch to the on position. Then data is taken from the various sensors on the bicycle to determine the proficiency of the cyclist:
       <div>
@@ -112,9 +112,9 @@
       <img src="img/SMT/detailed_design.JPG" alt="Detailed Design" class="center" style="width: 40%; height: 40%"/>
     </p>
 
-    <h3>
+    <h2>
       PCB Design
-    </h3>
+    </h2>
     <p>
 
     The PCB is approximately 100mm by 90mm and was also designed on Altium. A two-layer design was chosen as it is a lot cheaper and we don’t need the complexity of a PCB with more than two layers. The top layer can be seen in appendix section 10.6 and has multiple polygon pours. The pour on the bottom right is connected to the positive terminal of the Lipo battery. The top right and bottom left pour will also be at the same voltage as the bottom right pour however these pours could not be connected as we need a single path through the current sensors. The top left polygon carries 5V relative to ground, and this voltage is produced through the L7805ACV linear voltage regulator. The bottom layer has a single polygon pour that is the ground plane. The polygon pours are used to reduce ground and power impedances.
@@ -125,25 +125,25 @@
     </br>
     All decoupling capacitors were placed with the shortest trace to the relevant power pin to help reduce noise in the power traces. Most of the Vias on the PCB were left untented so that they can be used as test points. Additional test points were included for the output of the voltage regulator, as well as for the STEP and DIR pins on motor drivers. These are critical parts of the PCB which don’t have vias connected, as a result test points were added for them.
     </p>
-    <h4>
+    <h3>
       PCB without Polygons
-    </h4>
+    </h3>
     <img src="img/SMT/pcb_design_front.JPG" alt="PCB Design without Polygons" class="center">
-    <h4>
+    <h3>
       PCB with Polygons
-    </h4>
+    </h3>
     <img src="img/SMT/pcb_design_with_polygon.JPG" alt="PCB Design with Polygons" class="center">
 
-    <h3>
+    <h2>
       Overall Schematic
-    </h3>
+    </h2>
     <p>
       <img src="img/SMT/schematic.JPG" alt="Schematic" class="center">
     </p>
 
-    <h3>
+    <h2>
       Reflection
-    </h3>
+    </h2>
     <p>
     <img src="img/SMT/smart_training_wheels.JPG" alt="Final Product" class="center">
     </br>
@@ -156,9 +156,9 @@
     </div>
     </p>
 
-    <h3>
+    <h2>
       Further Details
-    </h3>
+    </h2>
     <p>
       For further details about this project please feel free to contact me at prasanth.parasu@gmail.com
     </p>
