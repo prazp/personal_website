@@ -50,13 +50,122 @@
   </header>
 
   <main id="contact">
-    <h1 class="lg-heading">
-      My Blog
+    <h1>
+      Smart Training Wheels
     </h1>
+    </br>
+    <h3>
+      Background
+    </h3>
+    <p>
+      A major project that I completed in 2018 at the University of New South Wales (UNSW) was developing the Smart Training Wheels device. I completed this project with Hamza Khan, another student at UNSW. On this page, I attempt to provide a summary of the work completed in this project. The details I provide are still quite high level and I hope to provide a much deeper technical discussion of the work in the future. 
+      </br>
+      </br>
+      Smart Training Wheels is a product used to teach children how to ride a bicycle. It features the ability to help children develop both pedalling and balancing skills concurrently whilst actively managing their safety. This will be achieved through the lowering of training wheels when the rider is displaying signs of instability and elevation of training wheels when the rider is displaying proficiency. The experience will further be enhanced by providing real time user feedback which will accelerate the learning process.
+    </p>
+    <h3>
+      Design Concept
+    </h3>
+    <p>
+    Smart Training Wheels will consist of four modules as seen in figure below. These modules are as follows:
+      <div>
+        <ul>
+          <li> Control Unit </li>
+          <li> User Output Unit </li>
+          <li> Motor Unit A </li>
+          <li> Motor Unit B </li>
+        </ul>
+      </div>
+      <img src="img/SMT/design_concept.JPG" alt="Design Concept" class="center" style="width: 40%; height: 40%"/>
+    </p>
+    <h3>
+      High Level Design
+    </h3>
+    <p>
+      <img src="img/SMT/high_level_design.JPG" alt="High Level Design" class="center" style="width: 40%; height: 40%"/>
+    </p>
+    <h3>
+      Design Details
+    </h3>
+    <p>
+      The principle of operation for Smart Training Wheels is described as follows. The user gets on the bike and turns the power switch to the on position. Then data is taken from the various sensors on the bicycle to determine the proficiency of the cyclist:
+      <div>
+        <ul>
+          <li> In all motor states (i.e. lowered or raised), speed is calculated using the acceleration data gathered by the IMU (accelerometer + gyroscope). </li>
+          <li> If the motors are considered lowered, analogue data is read from the force sensitive resistors placed in the motor unit </li>
+          <li> If the motors are considered raised, data is read from the IMU to determine the stability of the cyclist. </li>
+          <li> In the process of lowering the motors, the current drawn from the motor is read by the current sensors. Once the motor reaches the ground and the load on the motors increases, the amount of current drawn by the motor also increases. At this point we need to stop the motors from continuing to push the training wheels down or we risk motor burn occurring.</li>
+        </ul>
+      </div>
+
+      The microcontroller reads data from the various sensor inputs and determines if user is cycling proficiently or is relying on the use of the training wheels. If the users speed is over the predefined speed threshold and the force being applied on the training wheels is below the predefined force threshold the microcontroller will instruct the DRV8825 motor drivers to operate the motor and raise the training wheels using a Pulse width modulated signal generated through software with “bit banging”. When the training wheels are raised, and the bike begins to tilt outside the predefined tilt threshold the microcontroller once again instructs the motor drivers to operate the motors, but this time drop the training wheels to support the user. The Simple User Output LEDs will have the following states:
+      <div>
+        <ul>
+          <li> Training Wheels raised: Left and right green LED on if the bicycles tilt within predefined threshold. Otherwise turned off and left and right red LED are on. </li>
+          <li> Training Wheels lowered: Left and right green LEDs always off. Left or right red LED on if the force being applied to the training wheels is above force threshold. </li>
+        </ul>
+      </div>
+
+      The figure below provides a deeper breakdown of the above high level diagram. Red lines are for Power, Grey is for digital signals, Green is for analogue signals, orange is for mechanical signals. I2C (also known as TWI) communication is used between the microcontroller and MPU6050 (also in grey). UART was used for serial input/output (also in grey).
+      </br>
+      </br>
+      <img src="img/SMT/detailed_design.JPG" alt="Detailed Design" class="center" style="width: 40%; height: 40%"/>
+    </p>
+
+    <h3>
+      PCB Design
+    </h3>
+    <p>
+
+    The PCB is approximately 100mm by 90mm and was also designed on Altium. A two-layer design was chosen as it is a lot cheaper and we don’t need the complexity of a PCB with more than two layers. The top layer can be seen in appendix section 10.6 and has multiple polygon pours. The pour on the bottom right is connected to the positive terminal of the Lipo battery. The top right and bottom left pour will also be at the same voltage as the bottom right pour however these pours could not be connected as we need a single path through the current sensors. The top left polygon carries 5V relative to ground, and this voltage is produced through the L7805ACV linear voltage regulator. The bottom layer has a single polygon pour that is the ground plane. The polygon pours are used to reduce ground and power impedances.
+    </br>
+    </br>
+    All trace widths were selected based upon the maximum amount of current they may need to carry. The trace widths were selected in accordance with IPC-2221 PCB standard. This ensures that heating effects are minimised. The heat sink on the bottom of the DRV8825 was connected to the ground polygon on the PCB. This allows for better heat dissipation and thus enables the DRV8825 to drive up to 2.5A of current on each output.
+    </br>
+    </br>
+    All decoupling capacitors were placed with the shortest trace to the relevant power pin to help reduce noise in the power traces. Most of the Vias on the PCB were left untented so that they can be used as test points. Additional test points were included for the output of the voltage regulator, as well as for the STEP and DIR pins on motor drivers. These are critical parts of the PCB which don’t have vias connected, as a result test points were added for them.
+    </p>
+    <h4>
+      PCB without Polygons
+    </h4>
+    <img src="img/SMT/pcb_design_front.JPG" alt="PCB Design without Polygons" class="center">
+    <h4>
+      PCB with Polygons
+    </h4>
+    <img src="img/SMT/pcb_design_with_polygon.JPG" alt="PCB Design with Polygons" class="center">
+
+    <h3>
+      Overall Schematic
+    </h3>
+    <p>
+      <img src="img/SMT/schematic.JPG" alt="Schematic" class="center">
+    </p>
+
+    <h3>
+      Reflection
+    </h3>
+    <p>
+    <img src="img/SMT/smart_training_wheels.JPG" alt="Final Product" class="center">
+    </br>
+    The final product can be seen in the image above. I learnt alot from this project from learning to use embedded protocols like I2C to PCB design. It really allowed me to exercise the knowledge base I had built over the previous years and also allowed me to develop new skills. In terms of the product itself, the electrical aspects of the device worked really well, with the IMU device providing useful information to inform the microcontroller to raise or drop the training wheels. However if such a product would be brought to market we would need to:
+    <div>
+      <ul>
+        <li> Develop a better way to calculate the speed the bike, possibly through a reed switch </li>
+        <li> Create a better mechanical design as the motors struggled to handle the weight of a person </li>
+      </ul>
+    </div>
+    </p>
+
+    <h3>
+      Further Details
+    </h3>
+    <p>
+      For further details about this project please feel free to contact me at prasanth.parasu@gmail.com
+    </p>
   </main>
 
   <footer id="main-footer">
-    &copy; <script>document.write(new Date().getFullYear())</script> | <a class="text-muted" href="/privacy.html">Privacy</a> | <a class="text-muted" href="/attributions.html">Attributions</a> </p>
+    &copy; <script>document.write(new Date().getFullYear())</script> | <a class="text-muted" href="privacy.html">Privacy</a> | <a class="text-muted" href="attributions.html">Attributions</a> </p>
   </footer>
 
 

@@ -102,7 +102,7 @@
 
     </br>
     </br>
-    <img src="img/Thesis/DAT_proposed.JPG" alt="Proposed System" class="center">
+    <img src="img/Thesis/DAT_proposed.JPG" alt="DAT Proposed" class="center">
     </br>
 
     The network is first split into a feature extractor section (uptil the Residual_4 block), and spoofing classifier consisting of the global average pooling (GAP) layer and fully connected (FC) layer. The domain classifier is a duplicate copy of the spoofing detector with an additional gradient reversal layer (GRL) layer. The GRL is introduced to maximize the loss of the domain classifier. Note that training loss on the domain classifier can be calculated on both source domain and target domain utterances but loss on the spoofing classifier is only calculated on source domain utterances, as the target domain utterances are unlabelled (i.e. we don’t knowif they are genuine or spoofed signals).
@@ -123,14 +123,14 @@
       In the figure below, two spectrograms are presented with the speaker saying the same utterance "birthday parties have cupcakes and ice cream", however the utterance used to produce the right spectrogram was passed through a replay device. The artefacts introduced by the replay device are highlighted in the spectrogram below:
     </br>
     </br>
-    <img src="img/Thesis/artefacts.JPG" alt="Proposed System" class="center">
+    <img src="img/Thesis/artefacts.JPG" alt="Artefacts" class="center">
     </br>
 
     Firstly we see the energy in the high frequency regions is lower in the spoofed spectrogram. This artefact could possibly been introduced due to the application of an anti-aliasing filter by the replay device. The temporal stretching seen in the lower frequencies is possibly due to reverberation effects. Using the CAM technique we can visualise the regions of the input feature the ResNet-18 classifier is using to discriminate between genuine and spoofed files:
 
     </br>
     </br>
-    <img src="img/Thesis/cam.JPG" alt="Proposed System" class="center">
+    <img src="img/Thesis/cam.JPG" alt="CAM" class="center">
     </br>
 
     The heatmaps seen above, were produced with the previously discussed spectrograms as inputs. For genuine heatmaps we see that the ResNet classifier emphasises high frequency regions consistently. The reason for this is because as discussed before, replay attacks tend to produced utterances with low energy in high frequency regions.Looking at spoofed utterances, the ResNet mainly emphasises low frequency regions consistently, possibly linked to the temporal stretching artefact commonly introduced by replay attacks.
