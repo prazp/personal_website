@@ -11,6 +11,7 @@
   "author": "Brad Traversy",
   "license": "MIT",
   "dependencies": {
+    "commentbox.io": "^2.0.0",
     "gh-pages": "^1.2.0",
     "node-sass": "^4.9.2"
   }
