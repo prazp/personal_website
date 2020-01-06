@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/main.css">
   <title>Blog</title>
 </head>
@@ -58,9 +60,10 @@
       Design Proficiency 101
     </h1>
     </br>
-    A few people have asked me for advice in regards to the fourth year Electrical Design Proficiency at UNSW. Since an odd 200 people complete the course each year, I though it may be a good idea to create this post. I think this advice should help others completing design proficiency courses at other universities as well too. Keep in mind these are my OPINIONS and my opinions alone. 
-
+    A few people have asked me for advice in regards to the fourth year Electrical Design Proficiency at UNSW. Since an odd 200 people complete the course each year, I though it may be a good idea to create this post. I think this advice should help others completing design proficiency courses at other universities as well too. Keep in mind these are my OPINIONS on how to approach this subject and my opinions alone. 
+    <p>
     Firstly:
+    </p>
     <div>
       <ul>
         <li> The course is quite time consuming, but one of the most useful courses you will do </li>
@@ -69,17 +72,58 @@
       </ul>
     </div>
 
-    <h2>
+    <h2 class="mb-1">
     Electronics  
     </h2>
+    <p>
+    Go over these notes: <a href="https://subjects.ee.unsw.edu.au/elec3106/notes.html" class="text-success">ELEC3106</a> and ELEC2141 notes will be useful too. It can help lay the foundation to understand whats going on. While going through each task, link back the main objectives to what you know from previous coursework. There are two paths you could probably take from here: 
+    <div>
+      <ul>
+        <li> Start experimenting with SPICE. <a href="https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html#" class="text-success">LTspice</a> is pretty great. Heres a library with some extra components that you might find useful: <a href="https://drive.google.com/open?id=1IB-RbPFSnxJ4Te813tiFP2hlyzqSbWft" class="text-success">Google Drive</a> (credit: <a href=https://www.linkedin.com/in/jhuangqd/ class="text-success">Jonathan Huang</a>) </li>
+        <li> If you have no idea where to start, scowering the internet maybe your best option. </li>
+      </ul>
+    </div>
+
+    Once you have your design, draw a schematic and you can start building! Pro tips:
+    <div>
+      <ul>
+        <li> Look at the components provided on tasks as a guide of how you should be approaching the task and what design considerations you should be thinking about. Reading datasheets is vital, guiding what components are feasible and even better: make your design simpler.  </li>
+        <li> Cut a bunch of wires in the first lab with varying lengths. Reuse these in future labs. </li>
+        <li> Produce simple and neat designs (i.e. colour coded wires)! </li>
+        <li> Apply appropriate current limiting on your lab power supply... </li>
+      </ul>
+    </div>
+
+    I definitely spent more time outside of labs simply debugging my designs. Here are some steps to debugging that most of you will think are obvious:
+    <div>
+      <ul>
+        <li> Isolate the problem: Keep getting rid of parts, disconnecting stages until you get to the root cause. Worried about losing all your progress? Trust me, its the easier option. Take a photo so you can rebuild it again in the future. </li>
+        <li> Once you found where your problem is occuring, what you should do varies drastically on what you THINK the problem maybe. Fried Component? Build a simple circuit with that component, i.e. a unit gain buffer with an op amp. Component not acting as you expected? Read the datasheet and search up if others have encountered your problem. </li>
+      </ul>
+    </div>    
+    </p>
 
     <h2>
     Signal Processing
     </h2>
+    <p>
+      Most important notes you should read over are ELEC3104 notes. Alot of the signal processing tasks and purely digital, which is great (no more long hours in labs hopefully). Some signal processing pro tips:
+    <div>
+      <ul>
+        <li> Use the Texas instruments Filter design tool to design filters to meet specific requirements: <a href="http://www.ti.com/design-resources/design-tools-simulation/filter-designer.html" class="text-success"> link </a>. Keep in mind though you will still be asked questions about this, so go over theory. </li>
+        <li> The MATLAB documentation is extremely helpful, not only to understand how to use functions but also can be used to understand signal processing theory.</li>
+        <li> I found watching youtube videos and reading wikipedia pages on specific signal processing theory in certain fields (i.e. speech processing) very helpful in understanding how I should go about developing solutions to problems. For example, I found computationally efficient algorithms on Wikipedia which is useful to meet some soft objectives (I know im being vague...).</li>
+        <li> PLOT EVERYTHING! Best thing about MATLAB imo is the ability to easily make plots that display useful information, great for analysis and debugging.</li>
+      </ul>
+    </div>
+    </p>
 
     <h2>
     Control systems
     </h2>
+    <p>
+      I think alot of people struggle alot with control systems (as did I). I didn't find anything specific online thats super useful for control systems. My main reference to completing all the tasks was ELEC3114 notes. 
+    </p>
 
     <h2>
     Elective Topic
@@ -88,14 +132,13 @@
       The advice for this topic basically stems from the previous. Just make sure you pick a topic you find the most interesting. It will be the topic you most likely will want to spend time on.
     </p>
 
-
-    TBC...
+    Good luck! Let me know in the comments if you want to see more posts like this.
 
   </main>
   <div class="commentbox"></div>
 
   <footer id="main-footer">
-    &copy; <script>document.write(new Date().getFullYear())</script> | <a class="text-muted" href="privacy.html">Privacy</a> | <a class="text-muted" href="attributions.html">Attributions</a> </p>
+    &copy; <script>document.write(new Date().getFullYear())</script> | <a class="text-white" href="../privacy.html">Privacy</a> | <a class="text-white" href="../attributions.html">Attributions</a> </p>
   </footer>
 
   <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
